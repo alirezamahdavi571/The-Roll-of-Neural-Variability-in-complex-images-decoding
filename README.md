@@ -8,10 +8,10 @@ In this project, we have put almost all the codes needed for spiking data proces
 
 ```bash
 SRC
-    ├── test_fano_factor_code
-    ├── test_fano_factor_code
-    ├── test_fano_factor_code
-    ├── test_fano_factor_cod
-    └── final_code_for_decoding
+    ├── Fano factor
+    ├── GLM
+    ├── Information theory
+    ├── PSTH
+    └── Machine learning methods
                             └──SVM                          -       
 ```
