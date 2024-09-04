@@ -19,7 +19,7 @@ The diagram below shows the entire project and the data flow:
 ![jhidnjsbdw copy](https://github.com/user-attachments/assets/16d9f453-3d1c-40dd-b19f-e04745ab9077)
 ## How to use codes in this Project
 There are some exmple here that show how to use codes and functions in matlab.
-#### Load data 
+### Load data 
 I have 859 neurons that any neuron contains a raster matrix from spiking data`SpikeTrain_it_all`. Please consider this note that the input data is sorted.
 for first step we load data in matlab:
 
@@ -51,7 +51,7 @@ for i = 1:length(folderNames)
     end
 end                       -       
 ```
-#### seperate face data and non face cm and trials conditions
+### seperate face data and non face cm and trials conditions
 for have `SVM` classifier on data raster for any classes should be seperated.
 ```matlab
 %% seperate face data and non face cm and trials conditions
@@ -82,7 +82,7 @@ SpikeTrain_it_all = PSTH(SpikeTrain_it_all,number_of_neurons,'artifact',sliding_
 SpikeTrain_it_all = PSTH(SpikeTrain_it_all,number_of_neurons,'natural',sliding_step,window_length);
 
 ```
-#### SVM
+### SVM
 ``` matlab
 Face_Mean_PSTH_data = zeros(number_of_neurons,min_stimulus,number_of_time_slices);
 body_Mean_PSTH_data = zeros(number_of_neurons,min_stimulus,number_of_time_slices);
@@ -122,6 +122,62 @@ end
 ```
 accuracy across time slices can be watched:
 ![image](https://github.com/user-attachments/assets/2a8e8a49-d625-4a69-b7f6-58fadb034815)
+
+### Fano factor category based
+# Fano Factor Calculation
+
+The **Fano Factor** is a measure of the dispersion of a probability distribution and is defined as the ratio of the variance to the mean of a dataset. It is commonly used in fields such as neuroscience, physics, and statistics to assess the variability of spike counts or other data.
+
+#### Formula
+
+The Fano Factor (FF) is given by:
+
+\[
+\text{Fano Factor (FF)} = \frac{\sigma^2}{\mu}
+\]
+
+where:
+- \(\sigma^2\) is the variance of the data
+- \(\mu\) is the mean of the data
+
+#### Usage
+
+To calculate the Fano Factor:
+1. Collect the dataset for which you want to calculate the Fano Factor.
+2. Compute the mean (\(\mu\)) of the dataset.
+3. Compute the variance (\(\sigma^2\)) of the dataset.
+4. Use the formula above to compute the Fano Factor.
+
+#### Example
+
+Suppose we have a dataset representing spike counts in a neuroscience experiment:
+```matlab
+[mean_vec_face,var_vec_face,SpikeTrain_it_all] = catagoryBasedFano(SpikeTrain_it_all,'face',face_labels,mean_vec_face,var_vec_face,...
+    number_of_neurons,sliding_step,window_length,number_of_time_slices);
+
+[mean_vec_body,var_vec_body,SpikeTrain_it_all] = catagoryBasedFano(SpikeTrain_it_all,'body',body_labels,mean_vec_body,var_vec_body,...
+    number_of_neurons,sliding_step,window_length,number_of_time_slices);
+
+[mean_vec_natural,var_vec_natural,SpikeTrain_it_all] = catagoryBasedFano(SpikeTrain_it_all,'natural',natural_labels,mean_vec_natural,var_vec_natural,...
+    number_of_neurons,sliding_step,window_length,number_of_time_slices);
+
+[mean_vec_artifact,var_vec_artifact,SpikeTrain_it_all] = catagoryBasedFano(SpikeTrain_it_all,'artifact',artifact_labels,mean_vec_artifact,var_vec_artifact,...
+    number_of_neurons,sliding_step,window_length,number_of_time_slices);
+
+[mean_vec_nonface,var_vec_nonface,SpikeTrain_it_all] = catagoryBasedFano(SpikeTrain_it_all,'nonface',nonface_labels,mean_vec_nonface,var_vec_nonface,...
+    number_of_neurons,sliding_step,window_length,number_of_time_slices);
+
+for i = 1:number_of_time_slices
+    [fanofactor_face(i),~,~] = regression(mean_vec_face(:,i), var_vec_face(:,i),'one');
+    [fanofactor_artfact(i),~,~] = regression(mean_vec_artifact(:,i), var_vec_artifact(:,i),'one');
+    
+    [fanofactor_body(i),~,~] = regression(mean_vec_body(:,i), var_vec_body(:,i),'one');
+    [fanofactor_natural(i),~,~] = regression(mean_vec_natural(:,i), var_vec_natural(:,i),'one');
+    [fanofactor_nonface(i),~,~] = regression(mean_vec_nonface(:,i), var_vec_nonface(:,i),'one');
+end
+```
+
+please refer to Churchland's paper to inform about mean match fanofactor: `https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2828350/`
 
 
 
