@@ -15,3 +15,6 @@ SRC
     └── Machine learning methods
                             └──SVM                          -       
 ```
+The diagram below shows the entire project and the data flow:
+![jhidnjsbdw copy](https://github.com/user-attachments/assets/16d9f453-3d1c-40dd-b19f-e04745ab9077)
+#### How to use codes in this Project
