@@ -144,8 +144,8 @@ where:
 
 To calculate the Fano Factor:
 1. Collect the dataset for which you want to calculate the Fano Factor.
-2. Compute the mean (\(\mu\)) of the dataset.
-3. Compute the variance (\(\sigma^2\)) of the dataset.
+2. Compute the mean $$(\(\mu\))$$ of the dataset.
+3. Compute the variance $$(\(\sigma^2\))$$ of the dataset.
 4. Use the formula above to compute the Fano Factor.
 
 #### Example
@@ -179,6 +179,46 @@ end
 
 please refer to Churchland's paper to inform about mean match fanofactor: `https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2828350/`
 
+### Fano factor stimuli based
+
+```matlab
+All_stimuli = [artifact_labels ; body_labels ; natural_labels ; face_labels];
+indexes = [];
+mean_vec = zeros(number_of_neurons , length(All_stimuli) , number_of_time_slices);
+var_vec = zeros(number_of_neurons , length(All_stimuli) , number_of_time_slices);
+[mean_vec,var_vec] = ffstmbased(SpikeTrain_it_all , mean_vec,var_vec,All_stimuli,number_of_neurons,number_of_time_slices,sliding_step,window_length);
+```
+
+### Entropy
+we expect that Entropy behiaves like FF:
+``` matlab
+%% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Calculate information 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+entropy_nonface = entroInf(mean_vec_nonface,var_vec_nonface);
+entropy_face = entroInf(mean_vec_face,var_vec_face);
+time = linspace(-200,700,number_of_time_slices);
+
+figure()
+subplot(2,1,1)
+p1 = plot(time , entropy_face, 'LineWidth',5);
+grid on
+hold on
+title('entropy of Fano factor');ylabel('ratio');xlabel('time');
+p2 = plot(time , entropy_nonface, 'LineWidth',5);
+legend([p1,p2] , {'face' , 'nonface'} , 'FontSize',12)
+
+subplot(2,1,2)
+p1 = plot(time , fanofactor_face, 'LineWidth',5);
+grid on
+hold on
+title('Fanofactor');ylabel('ratio');xlabel('time');
+p2 = plot(time , fanofactor_nonface, 'LineWidth',5);
+legend([p1,p2] , {'face' , 'nonface'} , 'FontSize',12)
+```
+Entropy for 2 classes can be looked:
+![image](https://github.com/user-attachments/assets/8d6ca83d-a9db-45cb-a4e9-37feed8bd865)
 
 
 
