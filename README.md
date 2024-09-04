@@ -132,13 +132,13 @@ The **Fano Factor** is a measure of the dispersion of a probability distribution
 
 The Fano Factor (FF) is given by:
 
-\[
+$$
 \text{Fano Factor (FF)} = \frac{\sigma^2}{\mu}
-\]
+$$
 
 where:
-- \(\sigma^2\) is the variance of the data
-- \(\mu\) is the mean of the data
+- $$(\sigma^2\)$$ is the variance of the data
+- $$(\mu\)$$ is the mean of the data
 
 #### Usage
 
