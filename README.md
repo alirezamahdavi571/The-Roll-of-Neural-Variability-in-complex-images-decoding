@@ -9,11 +9,17 @@ In this project, we have put almost all the codes needed for spiking data proces
 ```bash
 SRC
     ├── Fano factor
+                    ├── Category based
+                    └── Stimuli based
     ├── GLM
     ├── Information theory
+                        ├── Mutual Information
+                        └── Factor Analysis
     ├── PSTH
     └── Machine learning methods
-                            └──SVM                          -       
+                            ├── LDA
+                            ├── Generalization (Time-Time decoding)
+                            └── SVM                          -       
 ```
 The diagram below shows the entire project and the data flow:
 ![jhidnjsbdw copy](https://github.com/user-attachments/assets/16d9f453-3d1c-40dd-b19f-e04745ab9077)
