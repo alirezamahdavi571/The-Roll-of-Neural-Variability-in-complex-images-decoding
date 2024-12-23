@@ -1,7 +1,8 @@
 # Spiking-codes
 
 
-![Uploading FIGURE1.png…]()
+
+![FIGURE1](https://github.com/user-attachments/assets/dea2a0c6-e449-43cb-bf4c-47bcd2a5a501)
 
 In this project, we have put almost all the codes needed for spiking data processing, which include the following sections:
 
