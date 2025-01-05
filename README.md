@@ -23,13 +23,7 @@ SRC
                             ├── Generalization (Time-Time decoding)
                             └── SVM                          -       
 ```
-The diagram below shows the entire project and the data flow:
-![jhidnjsbdw copy](https://github.com/user-attachments/assets/16d9f453-3d1c-40dd-b19f-e04745ab9077)
-## How to use codes in this Project
-There are some exmple here that show how to use codes and functions in matlab.
-### Load data 
-I have 859 neurons that any neuron contains a raster matrix from spiking data`SpikeTrain_it_all`. Please consider this note that the input data is sorted.
-for first step we load data in matlab:
+
 
 
 
