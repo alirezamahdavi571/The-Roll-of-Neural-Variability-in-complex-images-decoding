@@ -67,49 +67,60 @@ Assume two time series $X = \{x_1, x_2, ..., x_t\}$ and $Y = \{y_1, y_2, ..., y_
 
 
 
-# Normalized Direct Phase-Amplitude Coupling (ndPAC) Method (Ozkurt et al., 2012)
+# Normalized Direct Phase-Amplitude Coupling (ndPAC) Method
 
-The **Normalized Direct Phase-Amplitude Coupling (ndPAC)** method quantifies the relationship between the phase of a low-frequency oscillation and the amplitude of a high-frequency oscillation. It is widely used in neuroscience to study interactions between neural rhythms.
+The **Normalized Direct Phase-Amplitude Coupling (ndPAC)** method, introduced by Ozkurt et al. (2012), quantifies the interaction between the phase of low-frequency oscillations and the amplitude of high-frequency oscillations. It is widely applied in neuroscience to study neural rhythm interactions.
 
-## Steps in ndPAC Calculation
+---
+
+## How ndPAC Works
 
 ### 1. Signal Filtering
-The signal is bandpass-filtered to extract the low-frequency (\( f_\text{phase} \)) and high-frequency (\( f_\text{amplitude} \)) components.
+The input signal is bandpass-filtered to isolate:
+- **Low-frequency component** (\( f_\text{phase} \))
+- **High-frequency component** (\( f_\text{amplitude} \))
 
 ### 2. Hilbert Transform
-The analytic signals of the filtered components are computed using the Hilbert transform:
+The analytic signals for each filtered component are computed using the Hilbert transform:
 
-$$
+\[
 z_\text{phase}(t) = a_\text{phase}(t) e^{i\phi(t)}
-$$
+\]
 
-$$
+\[
 z_\text{amp}(t) = a_\text{amp}(t) e^{i\theta(t)}
-$$
+\]
 
-Here:
+Where:
 - \( \phi(t) \): Phase of the low-frequency component.
 - \( a_\text{amp}(t) \): Amplitude envelope of the high-frequency component.
 
-### 3. Phase-Amplitude Coupling (PAC)
-The PAC is calculated as:
+### 3. Phase-Amplitude Coupling (PAC) Calculation
+The PAC value is computed as:
 
-$$
+\[
 \text{PAC} = \left| \frac{1}{N} \sum_{t=1}^N a_\text{amp}(t) e^{i\phi(t)} \right|
-$$
+\]
 
-Where:
+Here:
 - \( a_\text{amp}(t) \): High-frequency amplitude envelope modulated by the low-frequency phase \( \phi(t) \).
-- \( N \): Number of samples.
+- \( N \): Number of time samples.
 
 ### 4. Normalization
-The PAC value is normalized to account for biases in the amplitude, ensuring it reflects true coupling. This can be done by comparing PAC to surrogate data or using an analytical normalization method.
+The PAC is normalized to reduce bias in amplitude modulation estimates. This is achieved either by comparing PAC against surrogate data or through analytical normalization methods.
 
-## Key Advantages
-- **Direct Calculation:** No need for binning or averaging, making the method computationally efficient.
-- **Normalization:** Ensures robust and unbiased coupling estimation.
+---
 
-This method enables precise and normalized quantification of phase-amplitude coupling, making it a powerful tool for studying neural dynamics.
+## Key Features of ndPAC
+
+- **Direct Calculation:** Bypasses the need for binning or averaging, improving computational efficiency.
+- **Normalization:** Provides unbiased and reliable coupling estimates.
+
+---
+
+This method enables precise and normalized quantification of phase-amplitude coupling, making it an essential tool for analyzing neural dynamics and studying brain rhythms.
+
+
 
 
 
