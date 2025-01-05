@@ -87,12 +87,14 @@ The **Normalized Direct Phase-Amplitude Coupling (ndPAC)** method quantifies the
 
 ### 1. Signal Filtering
 The signal is bandpass-filtered to extract the low-frequency
+
 $$
-f_\text{phase}
+f_\text{phase}(t)
 $$
+
 and high-frequency 
 $$
-f_\text{amplitude}
+z_\text{amp}(t)
 $$
 components.
 
