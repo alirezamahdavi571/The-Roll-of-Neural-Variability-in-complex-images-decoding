@@ -28,7 +28,7 @@ SRC
 
                          -       
 
-
+```
 # **Transfer Entropy: Mathematical Explanation**
 
 Transfer Entropy (TE) is a non-parametric statistical measure that quantifies the directional flow of information between two stochastic processes. It is grounded in information theory and can be particularly useful in understanding causal relationships in time series data.
