@@ -27,52 +27,6 @@ SRC
                             └── SVM
 
                          -       
-# Fano Factor: A Measure of Variability in Neural Spiking Activity
-
-The **Fano Factor** is a statistical measure used in neuroscience to quantify the variability of neural spiking activity. It provides insight into the irregularity of spike trains and is particularly useful for analyzing neural coding and response dynamics.
-
----
-
-## What is the Fano Factor?
-
-The Fano Factor (F) is defined as the ratio of the variance to the mean of the spike counts over a given time window:
-
-**F = Variance / Mean**
-
-Where:
-- **Variance**: The variability of spike counts
-- **Mean**: The average spike count
-
----
-
-## How to Calculate the Fano Factor
-
-### 1. Spike Train Data
-The input is a spike train, represented as a series of time stamps or binary values indicating the presence of spikes.
-
-### 2. Define a Time Window
-Partition the spike train into non-overlapping time windows of length T. Count the number of spikes (N) in each time window.
-
-### 3. Compute the Mean and Variance
-For the spike counts (N) across all time windows:
-- **Mean**: μ = (Σ N) / (Number of windows)
-- **Variance**: σ² = Σ (N - μ)² / (Number of windows)
-
-### 4. Calculate the Fano Factor
-Finally, compute the Fano Factor using the formula:
-
-**F = σ² / μ**
-
----
-
-## Interpreting the Fano Factor
-
-- **F = 1:** Poisson-like spiking activity (random and independent).
-- **F > 1:** Greater variability than Poisson (over-dispersed spike counts).
-- **F < 1:** Less variability than Poisson (under-dispersed spike counts).
-
----
-
 
 
 # **Transfer Entropy: Mathematical Explanation**
