@@ -16,6 +16,7 @@ SRC
     ├── GLM
     ├── Information theory
                         ├── Mutual Information
+                        ├── Transfer Entropy
                         └── Factor Analysis
     ├── PSTH
     └── Machine learning methods
