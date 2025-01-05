@@ -86,7 +86,15 @@ The **Normalized Direct Phase-Amplitude Coupling (ndPAC)** method quantifies the
 ## Steps in ndPAC Calculation
 
 ### 1. Signal Filtering
-The signal is bandpass-filtered to extract the low-frequency (\( f_\text{phase} \)) and high-frequency (\( f_\text{amplitude} \)) components.
+The signal is bandpass-filtered to extract the low-frequency
+$$
+f_\text{phase}
+$$
+and high-frequency 
+$$
+f_\text{amplitude}
+$$
+components.
 
 ### 2. Hilbert Transform
 The analytic signals of the filtered components are computed using the Hilbert transform:
