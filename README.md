@@ -29,6 +29,53 @@ SRC
                          -       
 
 ```
+
+# Fano Factor: A Measure of Variability in Neural Spiking Activity
+
+The **Fano Factor** is a statistical measure used in neuroscience to quantify the variability of neural spiking activity. It provides insight into the irregularity of spike trains and is particularly useful for analyzing neural coding and response dynamics.
+
+---
+
+## What is the Fano Factor?
+
+The Fano Factor (F) is defined as:
+
+![Fano Factor Formula](https://latex.codecogs.com/svg.latex?F%20%3D%20%5Cfrac%7B%5Csigma%5E2%7D%7B%5Cmu%7D)
+
+Where:
+- \( \sigma^2 \): Variance of spike counts
+- \( \mu \): Mean of spike counts
+
+---
+
+## How to Calculate the Fano Factor
+
+### 1. Spike Train Data
+The input is a spike train, represented as a series of time stamps or binary values indicating the presence of spikes.
+
+### 2. Define a Time Window
+Partition the spike train into non-overlapping time windows of length T. Count the number of spikes (\( N \)) in each time window.
+
+### 3. Compute the Mean and Variance
+- **Mean**:
+  ![Mean Formula](https://latex.codecogs.com/svg.latex?%5Cmu%20%3D%20%5Cfrac%7B%5CSum%20N%7D%7B%5Ctext%7BNumber%20of%20Windows%7D%7D)
+
+- **Variance**:
+  ![Variance Formula](https://latex.codecogs.com/svg.latex?%5Csigma%5E2%20%3D%20%5Cfrac%7B%5CSum%20(N%20-%20%5Cmu)%5E2%7D%7B%5Ctext%7BNumber%20of%20Windows%7D%7D)
+
+### 4. Fano Factor
+Finally, compute the Fano Factor:
+![Fano Factor Formula](https://latex.codecogs.com/svg.latex?F%20%3D%20%5Cfrac%7B%5Csigma%5E2%7D%7B%5Cmu%7D)
+
+---
+
+## Interpreting the Fano Factor
+
+- **F = 1:** Poisson-like spiking activity (random and independent).
+- **F > 1:** Greater variability than Poisson (over-dispersed spike counts).
+- **F < 1:** Less variability than Poisson (under-dispersed spike counts).
+
+
 # **Transfer Entropy: Mathematical Explanation**
 
 Transfer Entropy (TE) is a non-parametric statistical measure that quantifies the directional flow of information between two stochastic processes. It is grounded in information theory and can be particularly useful in understanding causal relationships in time series data.
