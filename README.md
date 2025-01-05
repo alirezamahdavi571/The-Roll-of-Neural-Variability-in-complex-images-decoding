@@ -70,12 +70,13 @@ Assume two time series $X = \{x_1, x_2, ..., x_t\}$ and $Y = \{y_1, y_2, ..., y_
 
 
 
+# **LFP (PAC)**
 
 
 
 
 
-
+![output](https://github.com/user-attachments/assets/0dda1f57-ef82-493b-844c-818243c0de7e)
 
 
 
