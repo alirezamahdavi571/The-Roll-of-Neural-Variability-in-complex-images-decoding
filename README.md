@@ -29,7 +29,41 @@ SRC
                          -       
 ```
 
+# **Transfer Entropy: Mathematical Explanation**
 
+Transfer Entropy (TE) is a non-parametric statistical measure that quantifies the directional flow of information between two stochastic processes. It is grounded in information theory and can be particularly useful in understanding causal relationships in time series data.
+
+## **Mathematical Definition**
+
+Given two stochastic processes $X$ and $Y$, the Transfer Entropy from $X$ to $Y$, denoted as $T_{X \to Y}$, is defined as:
+
+$$
+T_{X \to Y} = \sum P(y_{t+1}, y_t^{(k)}, x_t^{(l)}) \log \frac{P(y_{t+1} \mid y_t^{(k)}, x_t^{(l)})}{P(y_{t+1} \mid y_t^{(k)})}
+$$
+
+Here:
+- $y_{t+1}$: The state of process $Y$ at time $t+1$.
+- $y_t^{(k)} = (y_t, y_{t-1}, \dots, y_{t-k+1})$: The past $k$ states of $Y$ (history of $Y$).
+- $x_t^{(l)} = (x_t, x_{t-1}, \dots, x_{t-l+1})$: The past $l$ states of $X$ (history of $X$).
+- $P(y_{t+1}, y_t^{(k)}, x_t^{(l)})$: The joint probability distribution of $y_{t+1}$, $y_t^{(k)}$, and $x_t^{(l)}$.
+- $P(y_{t+1} \mid y_t^{(k)}, x_t^{(l)})$: The conditional probability of $y_{t+1}$ given $y_t^{(k)}$ and $x_t^{(l)}$.
+
+## **Interpretation**
+1. $T_{X \to Y}$ measures the reduction in uncertainty of $Y$'s future ($y_{t+1}$) by incorporating the history of $X$ ($x_t^{(l)}$), beyond what is already explained by the history of $Y$ itself ($y_t^{(k)}$).
+2. A high $T_{X \to Y}$ value implies that $X$ has a strong influence on $Y$.
+
+## **Key Features**
+- **Directional**: Unlike correlation, TE quantifies the direction of information flow ($X \to Y$) and is not symmetric ($T_{X \to Y} \neq T_{Y \to X}$).
+- **History Dependence**: By incorporating $k$- and $l$-length histories, TE captures lagged dependencies.
+- **Non-linear Relationships**: TE can capture non-linear interactions between $X$ and $Y$.
+
+## **Practical Applications**
+- **Neuroscience**: Identifying causal interactions between brain regions.
+- **Finance**: Understanding dependencies between market variables.
+- **Engineering**: Analyzing complex systems such as power grids or ecological networks.
+
+## **Simplified Example**
+Assume two time series $X = \{x_1, x_2, ..., x_t\}$ and $Y = \{y_1, y_2, ..., y_t\}$. If the dynamics of $Y$ depend on both its own past and the past of $X$, TE helps determine how much of $Y$'s future behavior is influenced by $X$'s past.
 
 
 
