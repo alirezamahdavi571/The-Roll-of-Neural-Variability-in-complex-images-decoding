@@ -79,6 +79,10 @@ Assume two time series $X = \{x_1, x_2, ..., x_t\}$ and $Y = \{y_1, y_2, ..., y_
 
 
 
+
+
+
+
 # Normalized Direct Phase-Amplitude Coupling (ndPAC) Method (Ozkurt et al., 2012)
 
 The **Normalized Direct Phase-Amplitude Coupling (ndPAC)** method quantifies the relationship between the phase of a low-frequency oscillation and the amplitude of a high-frequency oscillation. It is widely used in neuroscience to study interactions between neural rhythms.
