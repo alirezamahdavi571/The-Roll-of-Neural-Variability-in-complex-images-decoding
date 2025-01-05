@@ -93,9 +93,11 @@ f_\text{phase}(t)
 $$
 
 and high-frequency 
+
 $$
-z_\text{amp}(t)
+f_\text{amp}(t)
 $$
+
 components.
 
 ### 2. Hilbert Transform
