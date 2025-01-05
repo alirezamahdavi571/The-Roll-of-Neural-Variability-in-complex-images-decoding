@@ -19,10 +19,14 @@ SRC
                         ├── Transfer Entropy
                         └── Factor Analysis
     ├── PSTH
+    ├── LFP
+          └── PAC
     └── Machine learning methods
                             ├── LDA
                             ├── Generalization (Time-Time decoding)
-                            └── SVM                          -       
+                            └── SVM
+
+                         -       
 ```
 
 
