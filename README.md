@@ -1,7 +1,12 @@
-![FIGURE1](https://github.com/user-attachments/assets/dea2a0c6-e449-43cb-bf4c-47bcd2a5a501)
+
 
 # **Description**
+<div align="justify">
 This project investigates neural activity and the second moment of spike counting (variance) to identify features for classifying visual categories presented to a rhesus macaque. Our findings demonstrate that variance serves as an effective feature for category classification and is not merely a byproduct of firing rate. Additionally, we explored the underlying mechanisms of variance in the brain using a Recurrent Neural Network (RNN) model and Local Field Potential (LFP) analyses.
+</div>
+
+![FIGURE1](https://github.com/user-attachments/assets/dea2a0c6-e449-43cb-bf4c-47bcd2a5a501)
+
 
 # **Stimuli and task**
 <div align="justify">
