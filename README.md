@@ -27,7 +27,6 @@ SRC
                             └── SVM
 
                          -       
-```
 # Fano Factor: A Measure of Variability in Neural Spiking Activity
 
 The **Fano Factor** is a statistical measure used in neuroscience to quantify the variability of neural spiking activity. It provides insight into the irregularity of spike trains and is particularly useful for analyzing neural coding and response dynamics.
@@ -36,15 +35,13 @@ The **Fano Factor** is a statistical measure used in neuroscience to quantify th
 
 ## What is the Fano Factor?
 
-The Fano Factor (\( F \)) is defined as the ratio of the variance to the mean of the spike counts over a given time window:
+The Fano Factor (F) is defined as the ratio of the variance to the mean of the spike counts over a given time window:
 
-\[
-F = \frac{\sigma^2}{\mu}
-\]
+**F = Variance / Mean**
 
 Where:
-- \( \sigma^2 \): Variance of spike counts
-- \( \mu \): Mean of spike counts
+- **Variance**: The variability of spike counts
+- **Mean**: The average spike count
 
 ---
 
@@ -54,44 +51,28 @@ Where:
 The input is a spike train, represented as a series of time stamps or binary values indicating the presence of spikes.
 
 ### 2. Define a Time Window
-Partition the spike train into non-overlapping time windows of length \( T \). Count the number of spikes (\( N \)) in each time window.
+Partition the spike train into non-overlapping time windows of length T. Count the number of spikes (N) in each time window.
 
 ### 3. Compute the Mean and Variance
-For the spike counts (\( N \)) across all time windows:
-- Calculate the **mean**: \( \mu = \frac{\sum N}{\text{number of windows}} \)
-- Calculate the **variance**: \( \sigma^2 = \frac{\sum (N - \mu)^2}{\text{number of windows}} \)
+For the spike counts (N) across all time windows:
+- **Mean**: μ = (Σ N) / (Number of windows)
+- **Variance**: σ² = Σ (N - μ)² / (Number of windows)
 
 ### 4. Calculate the Fano Factor
 Finally, compute the Fano Factor using the formula:
 
-\[
-F = \frac{\sigma^2}{\mu}
-\]
+**F = σ² / μ**
 
 ---
 
 ## Interpreting the Fano Factor
 
-- **\( F = 1 \):** Poisson-like spiking activity (random and independent).
-- **\( F > 1 \):** Greater variability than Poisson (over-dispersed spike counts).
-- **\( F < 1 \):** Less variability than Poisson (under-dispersed spike counts).
+- **F = 1:** Poisson-like spiking activity (random and independent).
+- **F > 1:** Greater variability than Poisson (over-dispersed spike counts).
+- **F < 1:** Less variability than Poisson (under-dispersed spike counts).
 
 ---
 
-## Applications of the Fano Factor
-
-- **Neural Variability:** Assessing irregularity in neural firing rates.
-- **Cognitive States:** Identifying changes in variability associated with different brain states.
-- **Model Validation:** Comparing experimental data to theoretical models of neural activity.
-
----
-
-## Key Advantages
-
-- **Simplicity:** Easy to compute and interpret.
-- **Flexibility:** Applicable to various types of spiking data across experimental conditions.
-
----
 
 
 # **Transfer Entropy: Mathematical Explanation**
