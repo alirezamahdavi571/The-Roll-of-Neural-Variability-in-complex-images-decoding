@@ -28,6 +28,71 @@ SRC
 
                          -       
 ```
+# Fano Factor: A Measure of Variability in Neural Spiking Activity
+
+The **Fano Factor** is a statistical measure used in neuroscience to quantify the variability of neural spiking activity. It provides insight into the irregularity of spike trains and is particularly useful for analyzing neural coding and response dynamics.
+
+---
+
+## What is the Fano Factor?
+
+The Fano Factor (\( F \)) is defined as the ratio of the variance to the mean of the spike counts over a given time window:
+
+\[
+F = \frac{\sigma^2}{\mu}
+\]
+
+Where:
+- \( \sigma^2 \): Variance of spike counts
+- \( \mu \): Mean of spike counts
+
+---
+
+## How to Calculate the Fano Factor
+
+### 1. Spike Train Data
+The input is a spike train, represented as a series of time stamps or binary values indicating the presence of spikes.
+
+### 2. Define a Time Window
+Partition the spike train into non-overlapping time windows of length \( T \). Count the number of spikes (\( N \)) in each time window.
+
+### 3. Compute the Mean and Variance
+For the spike counts (\( N \)) across all time windows:
+- Calculate the **mean**: \( \mu = \frac{\sum N}{\text{number of windows}} \)
+- Calculate the **variance**: \( \sigma^2 = \frac{\sum (N - \mu)^2}{\text{number of windows}} \)
+
+### 4. Calculate the Fano Factor
+Finally, compute the Fano Factor using the formula:
+
+\[
+F = \frac{\sigma^2}{\mu}
+\]
+
+---
+
+## Interpreting the Fano Factor
+
+- **\( F = 1 \):** Poisson-like spiking activity (random and independent).
+- **\( F > 1 \):** Greater variability than Poisson (over-dispersed spike counts).
+- **\( F < 1 \):** Less variability than Poisson (under-dispersed spike counts).
+
+---
+
+## Applications of the Fano Factor
+
+- **Neural Variability:** Assessing irregularity in neural firing rates.
+- **Cognitive States:** Identifying changes in variability associated with different brain states.
+- **Model Validation:** Comparing experimental data to theoretical models of neural activity.
+
+---
+
+## Key Advantages
+
+- **Simplicity:** Easy to compute and interpret.
+- **Flexibility:** Applicable to various types of spiking data across experimental conditions.
+
+---
+
 
 # **Transfer Entropy: Mathematical Explanation**
 
@@ -67,58 +132,6 @@ Assume two time series $X = \{x_1, x_2, ..., x_t\}$ and $Y = \{y_1, y_2, ..., y_
 
 
 
-# Normalized Direct Phase-Amplitude Coupling (ndPAC) Method
-
-The **Normalized Direct Phase-Amplitude Coupling (ndPAC)** method, introduced by Ozkurt et al. (2012), quantifies the interaction between the phase of low-frequency oscillations and the amplitude of high-frequency oscillations. It is widely applied in neuroscience to study neural rhythm interactions.
-
----
-
-## How ndPAC Works
-
-### 1. Signal Filtering
-The input signal is bandpass-filtered to isolate:
-- **Low-frequency component** (\( f_\text{phase} \))
-- **High-frequency component** (\( f_\text{amplitude} \))
-
-### 2. Hilbert Transform
-The analytic signals for each filtered component are computed using the Hilbert transform:
-
-\[
-z_\text{phase}(t) = a_\text{phase}(t) e^{i\phi(t)}
-\]
-
-\[
-z_\text{amp}(t) = a_\text{amp}(t) e^{i\theta(t)}
-\]
-
-Where:
-- \( \phi(t) \): Phase of the low-frequency component.
-- \( a_\text{amp}(t) \): Amplitude envelope of the high-frequency component.
-
-### 3. Phase-Amplitude Coupling (PAC) Calculation
-The PAC value is computed as:
-
-\[
-\text{PAC} = \left| \frac{1}{N} \sum_{t=1}^N a_\text{amp}(t) e^{i\phi(t)} \right|
-\]
-
-Here:
-- \( a_\text{amp}(t) \): High-frequency amplitude envelope modulated by the low-frequency phase \( \phi(t) \).
-- \( N \): Number of time samples.
-
-### 4. Normalization
-The PAC is normalized to reduce bias in amplitude modulation estimates. This is achieved either by comparing PAC against surrogate data or through analytical normalization methods.
-
----
-
-## Key Features of ndPAC
-
-- **Direct Calculation:** Bypasses the need for binning or averaging, improving computational efficiency.
-- **Normalization:** Provides unbiased and reliable coupling estimates.
-
----
-
-This method enables precise and normalized quantification of phase-amplitude coupling, making it an essential tool for analyzing neural dynamics and studying brain rhythms.
 
 
 
