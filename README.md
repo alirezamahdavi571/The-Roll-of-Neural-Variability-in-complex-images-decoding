@@ -106,6 +106,16 @@ $$
 
 Factor scores (**f**) are estimated using observed data:
 
+## 5. Factor Rotation
+To improve interpretability, the factor loading matrix **Λ** is often rotated (e.g., Varimax, Quartimax), which does not change the underlying model but makes the loadings easier to interpret.
+
+## 6. Explained Variance
+The proportion of variance explained by each factor can be assessed using the eigenvalues of **ΛΛᵀ**, which helps evaluate the contribution of each factor.
+
+## Summary
+Factor analysis reduces a high-dimensional dataset into a smaller set of latent factors by modeling the relationships between observed variables as linear combinations of these factors. Mathematically, it involves decomposing the covariance matrix and estimating factor loadings and unique variances to explain the data structure compactly.
+
+
 
 # **Transfer Entropy: Mathematical Explanation**
 
