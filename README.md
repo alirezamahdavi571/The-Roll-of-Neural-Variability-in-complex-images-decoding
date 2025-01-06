@@ -46,6 +46,65 @@ SRC
 
 ```
 
+# Factor Analysis (Mathematical Explanation)
+
+Factor analysis is a statistical method used to uncover the underlying structure (latent factors) in a dataset by modeling the observed variables as linear combinations of these unobservable factors.
+
+## 1. Basic Model
+The observed variables **x** are modeled as:
+
+$$
+\mathbf{x} = \mathbf{\Lambda} \mathbf{f} + \mathbf{u}
+$$
+
+Where:
+- **x**: A *p*-dimensional vector of observed variables.
+- **Λ**: A *p* x *k* matrix of **factor loadings**, where *k* is the number of latent factors (*k < p*).
+- **f**: A *k*-dimensional vector of latent factors (common factors), typically assumed to have a standard normal distribution: **f ~ N(0, Iₖ)**.
+- **u**: A *p*-dimensional vector of unique variances (specific to each observed variable), typically assumed to have a diagonal covariance matrix: **u ~ N(0, Ψ)**, where **Ψ** is diagonal.
+
+## 2. Assumptions
+- The latent factors **f** and the unique variances **u** are uncorrelated:
+
+$$
+\text{Cov}(\mathbf{f}, \mathbf{u}) = \mathbf{0}.
+$$
+
+- The observed variables' covariance matrix can be decomposed as:
+
+$$
+\Sigma = \mathbf{\Lambda} \mathbf{\Lambda}^T + \Psi
+$$
+
+Where:
+ - **ΛΛᵀ**: The shared variance due to the common factors.
+  - **Ψ**: The unique variances.
+
+## 3. Key Objectives
+Factor analysis aims to:
+1. **Estimate Λ**: Understand the relationships between observed variables and latent factors.
+2. **Estimate Ψ**: Quantify the unique variance for each observed variable.
+3. **Determine *k***: Decide the appropriate number of latent factors.
+
+## 4. Steps in Factor Analysis
+### (a) Covariance Matrix Decomposition
+The observed covariance matrix **Σ** is decomposed as:
+
+$$
+\Sigma = \mathbf{\Lambda} \mathbf{\Lambda}^T + \Psi
+$$
+
+### (b) Maximum Likelihood Estimation
+The parameters **Λ** and **Ψ** are estimated by maximizing the likelihood of the data under the model.
+
+### (c) Factor Scores
+Factor scores (**f**) are estimated using observed data:
+
+$$
+\mathbf{f} = (\mathbf{\Lambda}^T \Psi^{-1} \mathbf{\Lambda})^{-1} \mathbf{\Lambda}^T \Psi^{-1} \mathbf{x}
+$$
+
+Factor scores (**f**) are estimated using observed data:
 
 
 # **Transfer Entropy: Mathematical Explanation**
