@@ -73,8 +73,6 @@ Here:
 
 ## **Key Features**
 - **Directional**: Unlike correlation, TE quantifies the direction of information flow ($X \to Y$) and is not symmetric ($T_{X \to Y} \neq T_{Y \to X}$).
-- **History Dependence**: By incorporating $k$- and $l$-length histories, TE captures lagged dependencies.
-- **Non-linear Relationships**: TE can capture non-linear interactions between $X$ and $Y$.
 
 ## **Practical Applications**
 - **Neuroscience**: Identifying causal interactions between brain regions.
