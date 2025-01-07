@@ -113,8 +113,9 @@ To improve interpretability, the factor loading matrix **Λ** is often rotated (
 The proportion of variance explained by each factor can be assessed using the eigenvalues of **ΛΛᵀ**, which helps evaluate the contribution of each factor.
 
 ## Summary
+<div align="justify">
 Factor analysis reduces a high-dimensional dataset into a smaller set of latent factors by modeling the relationships between observed variables as linear combinations of these factors. Mathematically, it involves decomposing the covariance matrix and estimating factor loadings and unique variances to explain the data structure compactly.
-
+</div>
 
 
 # **Transfer Entropy: Mathematical Explanation**
@@ -200,7 +201,9 @@ $$
 $$
 
 ### 4. Normalization
+<div align="justify">
 The PAC value is normalized to account for biases in the amplitude, ensuring it reflects true coupling. This can be done by comparing PAC to surrogate data or using an analytical normalization method.
+</div>
 
 ## Key Advantages
 - **Direct Calculation:** No need for binning or averaging, making the method computationally efficient.
