@@ -37,6 +37,11 @@ SRC
     ├── PSTH
     ├── LFP
           └── PAC
+          └── PLV
+    ├── RDM
+          └── Granger Casualty 
+          └── Comparison with Neural Networks
+
     └── Machine learning methods
                             ├── LDA
                             ├── Generalization (Time-Time decoding)
