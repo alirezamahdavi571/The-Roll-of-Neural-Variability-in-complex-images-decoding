@@ -1,220 +1,298 @@
+# 🧠 Neural Variability and Visual Coding in Primate Cortex
 
+![Python](https://img.shields.io/badge/python-3.8+-blue.svg)
+![MATLAB](https://img.shields.io/badge/MATLAB-R2022+-orange.svg)
+![Neuroscience](https://img.shields.io/badge/domain-systems%20neuroscience-green.svg)
+![Status](https://img.shields.io/badge/status-research%20project-purple.svg)
+![License](https://img.shields.io/badge/license-academic-lightgrey.svg)
 
-# **Description**
+---
+
+## 📊 GitHub Analytics
+
+![Repo Size](https://img.shields.io/github/repo-size/your-username/your-repo)
+![Last Commit](https://img.shields.io/github/last-commit/your-username/your-repo)
+![Languages](https://img.shields.io/github/languages/top/your-username/your-repo)
+
+---
+
+# 🔬 Abstract
+
 <div align="justify">
-This project investigates neural activity and the second moment of spike counting (variance) to identify features for classifying visual categories presented to a rhesus macaque. Our findings demonstrate that variance serves as an effective feature for category classification and is not merely a byproduct of firing rate. Additionally, we explored the underlying mechanisms of variance in the brain using a Recurrent Neural Network (RNN) model and Local Field Potential (LFP) analyses.
+
+What if the brain’s “neural noise” is not noise at all, but a hidden channel of information?
+
+Despite decades of work on sensory coding, the contribution of trial-by-trial neural variability remains unresolved, particularly at the single-neuron level. Classical studies have emphasized firing rates and noise correlations, yet the information content in variability—quantified via the Fano factor (variance-to-mean ratio of spike counts)—has received remarkably little attention.
+
+Here, we directly investigate the role of neural variability dynamic structures in complex stimulus coding across the Inferior Temporal Cortex (ITC) and Ventrolateral Prefrontal Cortex (vlPFC) during visual categorization.
+
+Using simultaneous recordings from ITC and vlPFC in macaques performing a passive RSVP task, we show that variance and the Fano factor encode category-selective information independently of mean firing rate, as confirmed through generalized linear modeling (GLM) that dissociates rate- and variability-based contributions.
+
+Variability-based decoding performs comparably to firing-rate–based classifiers and exhibits structured temporal dynamics characterized by distinct quenching phases across cortical regions and stimulus types.
+
+Anterior ITC neurons display pronounced variability-based selectivity for biologically salient categories such as faces versus artificial objects.
+
+Importantly, both phase-locking value (PLV) and Granger causality analyses reveal a top-down communication channel in which trials with high neural variability exhibit stronger feedback from vlPFC to ITC than low-variability trials—an effect not observed for firing-rate–based classifications.
+
+Finally, Representational Dissimilarity Matrix (RDM) analysis demonstrates that variability-based neural representations are more consistent with recurrent computational models (e.g., CORnet-S) than feedforward architectures, suggesting that variability may support recurrent inference and hierarchical integration.
+
+Together, these findings indicate that neural variability is not stochastic background activity but a structured and behaviorally meaningful dimension of the neural code carrying independent sensory information and participating in feedback-driven recurrent processing underlying complex stimulus coding in ITC and vlPFC.
+
 </div>
 
-![FIGURE1](https://github.com/user-attachments/assets/dea2a0c6-e449-43cb-bf4c-47bcd2a5a501)
+---
 
+## 🔑 Keywords
 
-# **Stimuli and task**
-<div align="justify">
-The task paradigm required maintenance of eye fixation within a 2° radius around the center of a monitor (Asus VG248QE: 24in, resolution 1920x1080, 144 Hz refresh rate). Upon ensuring the eye fixation, a stimulus is displayed in place of the fixation point for a 50-ms duration over a gray background, followed by a 600-ms blank interval. The stimuli were scaled to fit in a 7° by 7° square at the center of the monitor. Monkeys got rewarded for holding fixation every 1.5 seconds with droppings of sweet juice. The stimulus set contains 155 pictures from 4 different categories: face, body, artificial, and natural. 
-Behavioral and recording method
-We conducted experiments using acute extracellular recording in behaving rhesus macaques. Using two single tungsten electrodes (A-M Systems, FHC) simultaneously, we recorded the broadband neural activity of the prefrontal and inferior temporal cortices. Since the receptive field (RF) of IT neurons is relatively large and the RF of PFC neurons is not well-defined, we determined the spatial preference based on the PFC neuron’s RF. Before starting the main task, the RF of PFC neurons was determined by performing an RF-mapping task and monitoring the responses of the neurons to the spatial location of the stimulus. A reference grid, with holes 1 mm apart, was used inside all the recording chambers to guide electrode penetrations and localize them relative to structural MRI images. The neural response was amplified, quantized, and saved using a 40KHz data acquisition system (NikTek Systems).
- </div>
+- Neural variability  
+- Fano factor  
+- Inferior Temporal Cortex (ITC)  
+- Ventrolateral Prefrontal Cortex (vlPFC)  
+- Visual categorization  
+- Recurrent neural networks  
+- Granger causality  
+- Representational similarity analysis  
 
- 
-# **Neural data preprocessing**
-<div align="justify">
- Wide-band neural data was initially band-pass filtered between 300 to 3000 Hz to extract the high-frequency signals. By setting a multiplier of the median of the resulting waveform, the spikes were detected using the ROSS Toolbox 28. Using different electrodes for recording from different monkeys, we did not use the sorted spikes in the analysis and used the multiunit activity instead. Followed by spike detection, we chose a subset of recorded neurons using a selectivity criteria by which a unit was discarded if its post- stimulus average firing rate didn’t change significantly compared to its baseline activity for all of the four categories. The statistical significance was measured by a Wilcoxon signed rank test with a 5% confidence level.
- </div>
+---
 
- 
-#### Files Structure
+# 🧠 Experimental Pipeline
+
+```mermaid
+flowchart TD
+
+A[Visual Stimuli<br>RSVP task] --> B[Behavioral Recording]
+
+B --> C[Electrophysiology<br>ITC + vlPFC]
+
+C --> D[Spike Detection<br>Spike Sorting]
+
+D --> E1[Firing Rate]
+D --> E2[Variance / Fano Factor]
+D --> E3[LFP Analysis]
+
+E1 --> F1[Decoding<br>LDA / SVM]
+E2 --> F1
+
+E3 --> F2[PLV Analysis]
+
+F1 --> G[RDM Analysis]
+F2 --> G
+
+G --> H[Granger Causality]
+
+H --> I[Comparison with RNN Models]
+
+I --> J[Neural Variability as Computation]
+```
+
+---
+
+# 🐒 Subjects and Experimental Design
+
+The study was conducted on three adult male rhesus macaque monkeys (*Macaca mulatta*).
+
+- Monkey J: 10 kg, 7 years old  
+- Monkey Z: 12 kg, 14 years old  
+- Monkey V: 8.8 kg, 9 years old  
+
+All procedures followed institutional and national ethical guidelines for animal experimentation.
+
+---
+
+# 🧠 Electrophysiological Recordings
+
+Neural activity was simultaneously recorded from:
+
+- Inferior Temporal Cortex (ITC)
+- Ventrolateral Prefrontal Cortex (vlPFC)
+
+using extracellular acute recording techniques with tungsten microelectrodes.
+
+### Recording Parameters
+
+- Sampling rate: 40 kHz (30 kHz for Monkey V)
+- Spike band: 300–3000 Hz
+- LFP band: 0.1–9000 Hz
+- Recording system: NikTek Systems
+- Amplifier: Resana (Tehran, Iran)
+
+Electrode localization was guided using MRI and CT imaging combined with a 1-mm reference grid.
+
+---
+
+# 👁 Behavioral Task and Stimuli
+
+Monkeys performed a passive fixation RSVP task.
+
+### Stimulus Presentation
+
+- Stimulus duration: 50 ms
+- Inter-stimulus interval: 600 ms
+- Display: 144 Hz monitor
+- Visual angle: 7° × 7°
+- Eye tracking: 200 Hz infrared system
+
+### Stimulus Categories
+
+- Faces
+- Bodies
+- Artificial objects
+- Natural objects
+
+Monkey V additionally viewed 500 grayscale natural and artificial object images with matched spatial-frequency statistics using the SHINE toolbox.
+
+---
+
+# 📈 Neural Variability Analysis
+
+To characterize trial-to-trial neural variability, we computed:
+
+- Variance of spike counts
+- Fano Factor (FF)
+
+using sliding temporal windows:
+
+- Window size: 50 ms
+- Sliding step: 5 ms
+
+A mean-matching procedure was applied across time to remove firing-rate biases from FF estimates.
+
+Analyses were performed across 856 neurons recorded from ITC and vlPFC.
+
+---
+
+# 🤖 Statistical and Decoding Analyses
+
+### Machine Learning
+
+- Support Vector Machine (SVM)
+- Linear Discriminant Analysis (LDA)
+- Time-Time decoding
+
+### Statistical Modeling
+
+Generalized Linear Models (GLM) were used to dissociate:
+
+- firing rate effects
+- neural variability
+- stimulus contrast
+- illumination effects
+
+### Temporal Statistics
+
+- Cluster-based permutation tests
+- Wilcoxon signed-rank tests
+
+were used to evaluate neural onset and peak dynamics.
+
+---
+
+# 🔄 Time-Time Decoding
+
+Cross-temporal decoding analyses were performed to determine whether neural representations remained stable or dynamically evolved over time.
+
+Time-Time decoding matrices were computed independently for:
+
+- firing rate
+- neural variance
+
+allowing comparison of temporal generalization structures.
+
+---
+
+# 🔗 Granger Causality Analysis
+
+Granger causality was applied to Representational Dissimilarity Matrix (RDM) time series derived from:
+
+- firing rate
+- neural variability
+
+to quantify directional interactions between ITC and vlPFC.
+
+This analysis revealed stronger top-down vlPFC → ITC feedback during high-variability trials.
+
+---
+
+# 🧩 Representational Similarity Analysis (RSA)
+
+Representational Dissimilarity Matrices (RDMs) derived from neural variability were compared against:
+
+- ideal categorical models
+- CORnet-S
+- AlexNet
+
+using Kendall’s tau correlation.
+
+Results showed stronger correspondence between neural variability representations and recurrent neural network architectures.
+
+---
+
+# 🌐 Phase Locking Value (PLV)
+
+Functional connectivity between ITC and vlPFC was quantified using Phase Locking Value (PLV).
+
+Beta-band PLV (15–30 Hz) analyses revealed stronger synchronization during high-variability trials relative to low-variability conditions.
+
+---
+
+# 🗂 Repository Structure
 
 ```bash
 SRC/
 ├── Fano_Factor/
+│   ├── Category_based/
+│   └── Stimulus_based/
+│
 ├── GLM/
+│
 ├── Information_Theory/
-│   ├── Mutual_Information/
-│   ├── Transfer_Entropy/
-│   └── Factor_Analysis/
+│
 ├── PSTH/
+│
 ├── LFP/
-│   ├── PAC/
-│   └── PLV/
+│   ├── PLV/
+│
 ├── RDM/
 │   ├── Granger_Causality/
 │   └── Neural_Network_Comparison/
+│
 └── Machine_Learning/
     ├── LDA/
     ├── SVM/
-    └── Time-Time_Decoding/
+    └── Time_Time_Decoding/
 ```
 
-# Factor Analysis (Mathematical Explanation)
+---
 
-Factor analysis is a statistical method used to uncover the underlying structure (latent factors) in a dataset by modeling the observed variables as linear combinations of these unobservable factors.
+# 🔧 Technologies Used
 
-## 1. Basic Model
-The observed variables **x** are modeled as:
+- Python
+- MATLAB
+- NumPy
+- SciPy
+- scikit-learn
+- MNE-Python
+- PsychToolbox
 
-$$
-\mathbf{x} = \mathbf{\Lambda} \mathbf{f} + \mathbf{u}
-$$
+---
 
-Where:
-- **x**: A *p*-dimensional vector of observed variables.
-- **Λ**: A *p* x *k* matrix of **factor loadings**, where *k* is the number of latent factors (*k < p*).
-- **f**: A *k*-dimensional vector of latent factors (common factors), typically assumed to have a standard normal distribution: **f ~ N(0, Iₖ)**.
-- **u**: A *p*-dimensional vector of unique variances (specific to each observed variable), typically assumed to have a diagonal covariance matrix: **u ~ N(0, Ψ)**, where **Ψ** is diagonal.
+# 📚 Scientific Contributions
 
-## 2. Assumptions
-- The latent factors **f** and the unique variances **u** are uncorrelated:
+This work demonstrates that:
 
-$$
-\text{Cov}(\mathbf{f}, \mathbf{u}) = \mathbf{0}.
-$$
+- neural variability carries independent sensory information
+- variability dynamics differ across cortical regions
+- top-down recurrent processing modulates neural variability
+- recurrent architectures better capture neural representational geometry than feedforward models
 
-- The observed variables' covariance matrix can be decomposed as:
+---
 
-$$
-\Sigma = \mathbf{\Lambda} \mathbf{\Lambda}^T + \Psi
-$$
+# 👨‍🔬 Citation
 
-Where:
- - **ΛΛᵀ**: The shared variance due to the common factors.
-  - **Ψ**: The unique variances.
+If you use this repository, please cite the associated publication.
 
-## 3. Key Objectives
-Factor analysis aims to:
-1. **Estimate Λ**: Understand the relationships between observed variables and latent factors.
-2. **Estimate Ψ**: Quantify the unique variance for each observed variable.
-3. **Determine *k***: Decide the appropriate number of latent factors.
+---
 
-## 4. Steps in Factor Analysis
-### (a) Covariance Matrix Decomposition
-The observed covariance matrix **Σ** is decomposed as:
+# ⭐ Acknowledgment
 
-$$
-\Sigma = \mathbf{\Lambda} \mathbf{\Lambda}^T + \Psi
-$$
-
-### (b) Maximum Likelihood Estimation
-The parameters **Λ** and **Ψ** are estimated by maximizing the likelihood of the data under the model.
-
-### (c) Factor Scores
-Factor scores (**f**) are estimated using observed data:
-
-$$
-\mathbf{f} = (\mathbf{\Lambda}^T \Psi^{-1} \mathbf{\Lambda})^{-1} \mathbf{\Lambda}^T \Psi^{-1} \mathbf{x}
-$$
-
-Factor scores (**f**) are estimated using observed data:
-
-## 5. Factor Rotation
-To improve interpretability, the factor loading matrix **Λ** is often rotated (e.g., Varimax, Quartimax), which does not change the underlying model but makes the loadings easier to interpret.
-
-## 6. Explained Variance
-The proportion of variance explained by each factor can be assessed using the eigenvalues of **ΛΛᵀ**, which helps evaluate the contribution of each factor.
-
-## Summary
-<div align="justify">
-Factor analysis reduces a high-dimensional dataset into a smaller set of latent factors by modeling the relationships between observed variables as linear combinations of these factors. Mathematically, it involves decomposing the covariance matrix and estimating factor loadings and unique variances to explain the data structure compactly.
-</div>
-
-
-# **Transfer Entropy: Mathematical Explanation**
-
-Transfer Entropy (TE) is a non-parametric statistical measure that quantifies the directional flow of information between two stochastic processes. It is grounded in information theory and can be particularly useful in understanding causal relationships in time series data.
-
-## **Mathematical Definition**
-
-Given two stochastic processes $X$ and $Y$, the Transfer Entropy from $X$ to $Y$, denoted as $T_{X \to Y}$, is defined as:
-
-$$
-T_{X \to Y} = \sum P(y_{t+1}, y_t^{(k)}, x_t^{(l)}) \log \frac{P(y_{t+1} \mid y_t^{(k)}, x_t^{(l)})}{P(y_{t+1} \mid y_t^{(k)})}
-$$
-
-Here:
-- $y_{t+1}$: The state of process $Y$ at time $t+1$.
-- $y_t^{(k)} = (y_t, y_{t-1}, \dots, y_{t-k+1})$: The past $k$ states of $Y$ (history of $Y$).
-- $x_t^{(l)} = (x_t, x_{t-1}, \dots, x_{t-l+1})$: The past $l$ states of $X$ (history of $X$).
-- $P(y_{t+1}, y_t^{(k)}, x_t^{(l)})$: The joint probability distribution of $y_{t+1}$, $y_t^{(k)}$, and $x_t^{(l)}$.
-- $P(y_{t+1} \mid y_t^{(k)}, x_t^{(l)})$: The conditional probability of $y_{t+1}$ given $y_t^{(k)}$ and $x_t^{(l)}$.
-
-## **Interpretation**
-1. $T_{X \to Y}$ measures the reduction in uncertainty of $Y$'s future ($y_{t+1}$) by incorporating the history of $X$ ($x_t^{(l)}$), beyond what is already explained by the history of $Y$ itself ($y_t^{(k)}$).
-2. A high $T_{X \to Y}$ value implies that $X$ has a strong influence on $Y$.
-
-## **Key Features**
-- **Directional**: Unlike correlation, TE quantifies the direction of information flow ($X \to Y$) and is not symmetric ($T_{X \to Y} \neq T_{Y \to X}$).
-
-## **Practical Applications**
-- **Neuroscience**: Identifying causal interactions between brain regions.
-- **Finance**: Understanding dependencies between market variables.
-- **Engineering**: Analyzing complex systems such as power grids or ecological networks.
-
-## **Simplified Example**
-Assume two time series $X = \{x_1, x_2, ..., x_t\}$ and $Y = \{y_1, y_2, ..., y_t\}$. If the dynamics of $Y$ depend on both its own past and the past of $X$, TE helps determine how much of $Y$'s future behavior is influenced by $X$'s past.
-
-
-
-
-![output](https://github.com/user-attachments/assets/715ce2eb-554a-42f6-b0ae-71eeaff20294)
-
-
-
-
-# Normalized Direct Phase-Amplitude Coupling (ndPAC) Method (Ozkurt et al., 2012)
-
-The **Normalized Direct Phase-Amplitude Coupling (ndPAC)** method quantifies the relationship between the phase of a low-frequency oscillation and the amplitude of a high-frequency oscillation. It is widely used in neuroscience to study interactions between neural rhythms.
-
-## Steps in ndPAC Calculation
-
-### 1. Signal Filtering
-The signal is bandpass-filtered to extract the low-frequency
-
-$$
-f_\text{phase}
-$$
-
-and high-frequency 
-
-$$
-f_\text{amp}
-$$
-
-components.
-
-### 2. Hilbert Transform
-The analytic signals of the filtered components are computed using the Hilbert transform:
-
-$$
-z_\text{phase}(t) = a_\text{phase}(t) e^{i\phi(t)}
-$$
-
-$$
-z_\text{amp}(t) = a_\text{amp}(t) e^{i\theta(t)}
-$$
-
-
-### 3. Phase-Amplitude Coupling (PAC)
-The PAC is calculated as:
-
-$$
-\text{PAC} = \left| \frac{1}{N} \sum_{t=1}^N a_\text{amp}(t) e^{i\phi(t)} \right|
-$$
-
-### 4. Normalization
-<div align="justify">
-The PAC value is normalized to account for biases in the amplitude, ensuring it reflects true coupling. This can be done by comparing PAC to surrogate data or using an analytical normalization method.
-</div>
-
-## Key Advantages
-- **Direct Calculation:** No need for binning or averaging, making the method computationally efficient.
-- **Normalization:** Ensures robust and unbiased coupling estimation.
-
-This method enables precise and normalized quantification of phase-amplitude coupling, making it a powerful tool for studying neural dynamics.
-
-
-
-
-![output](https://github.com/user-attachments/assets/0dda1f57-ef82-493b-844c-818243c0de7e)
-
-
-
-
+This repository was developed for computational neuroscience research focused on neural variability, visual categorization, recurrent processing, and cortical dynamics in behaving primates.
