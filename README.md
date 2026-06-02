@@ -25,30 +25,24 @@ We conducted experiments using acute extracellular recording in behaving rhesus 
 #### Files Structure
 
 ```bash
-SRC
-    ├── Fano factor
-                    ├── Category based
-                    └── Stimuli based
-    ├── GLM
-    ├── Information theory
-                        ├── Mutual Information
-                        ├── Transfer Entropy
-                        └── Factor Analysis
-    ├── PSTH
-    ├── LFP
-          └── PAC
-          └── PLV
-    ├── RDM
-          └── Granger Casualty 
-          └── Comparison with Neural Networks
-
-    └── Machine learning methods
-                            ├── LDA
-                            ├── Generalization (Time-Time decoding)
-                            └── SVM
-
-                         -       
-
+SRC/
+├── Fano_Factor/
+├── GLM/
+├── Information_Theory/
+│   ├── Mutual_Information/
+│   ├── Transfer_Entropy/
+│   └── Factor_Analysis/
+├── PSTH/
+├── LFP/
+│   ├── PAC/
+│   └── PLV/
+├── RDM/
+│   ├── Granger_Causality/
+│   └── Neural_Network_Comparison/
+└── Machine_Learning/
+    ├── LDA/
+    ├── SVM/
+    └── Time-Time_Decoding/
 ```
 
 # Factor Analysis (Mathematical Explanation)
